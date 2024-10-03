@@ -1,16 +1,21 @@
 import {LoginActions} from "../testActions/loginActions";
+import {HelperActions} from "../testActions/helperActions";
 import {test as baseTest} from '@playwright/test';
 
 const test = baseTest.extend<{
-    mainTestActions: LoginActions;
+    loginTestActions: LoginActions;
+    helperActions: HelperActions;
 }>({
     page: async ({page, context}, use) => {
         await page.goto("/");
         await new LoginActions(page, context).waitForLoginButton();
         await use(page);
     },
-    mainTestActions: async ({page, context}, use) => {
+    loginTestActions: async ({page, context}, use) => {
         await use(new LoginActions(page, context));
+    },
+    helperActions: async ({page, context}, use) => {
+        await use(new HelperActions(page, context));
     },
 
 })
