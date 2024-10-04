@@ -15,4 +15,8 @@ export class LoginObjects {
         return this.page.locator('input#user-name');
     }
 
+    getErrorContainer() {
+        return this.page.locator('div.error-message-container.error');
+    }
+
 }

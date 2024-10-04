@@ -1,12 +1,13 @@
 import {defineConfig, devices} from '@playwright/test';
+import type {TestOptions} from './tests/hooks';
 
-export default defineConfig({
+export default defineConfig<TestOptions>({
     testDir: './tests',
+    reporter: [['./reporters/mainReporter.ts', {customOption: 'some value'}]],
     fullyParallel: true,
     forbidOnly: !!process.env.CI,
     retries: process.env.CI ? 2 : 0,
     workers: process.env.CI ? 1 : undefined,
-    reporter: 'html',
 
     use: {
         baseURL: 'https://www.saucedemo.com/',
@@ -19,16 +20,26 @@ export default defineConfig({
 
     projects: [
         {
-            name: 'chromium',
+            name: 'browserstack',
             use: {
-                ...devices['Desktop Chrome'],
-                headless: false,
-                deviceScaleFactor: undefined,
-                viewport: null,
-                launchOptions: {
-                    args: ['--start-maximized']
-                },
+                browserstack: true,
+                browserstackBrowser: 'chrome', // allowed browsers are `chrome`, `edge`, `playwright-chromium`, `playwright-firefox` and `playwright-webkit`
+                browserstackOS: 'Windows',
+                browserstackOSVersion: '11'
             },
         },
+        // {
+        //     name: 'chrome local',
+        //     use: {
+        //         ...devices['Desktop Chrome'],
+        //         headless: false,
+        //         deviceScaleFactor: undefined,
+        //         viewport: null,
+        //         launchOptions: {
+        //             args: ['--start-maximized']
+        //         },
+        //     },
+        // },
+
     ],
 });

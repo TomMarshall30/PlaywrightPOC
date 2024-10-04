@@ -1,4 +1,4 @@
-import {BrowserContext, expect, type Page} from '@playwright/test';
+import {BrowserContext, expect, Locator, type Page} from '@playwright/test';
 import * as nodePath from "node:path";
 import {Context} from "node:vm";
 
@@ -21,6 +21,10 @@ export class HelperActions {
 
     async validateScreenshot() {
         await expect(this.page).toHaveScreenshot();
+    }
+
+    async validateScreenshotElement(locator: Locator, imageName: string) {
+        await locator.screenshot({path: './screenshots/' + imageName + '.png'});
     }
 
 }
