@@ -1,19 +1,16 @@
-import {BrowserContext, expect, type Page} from '@playwright/test';
+import {expect, type Page} from '@playwright/test';
 import {LoginObjects} from "../testObjects/loginObjects";
 import {HelperActions} from "./helperActions";
-import {Context} from "node:vm";
 
 export class LoginActions {
     readonly page: Page;
-    readonly context: Context;
     readonly loginObjects: LoginObjects;
     readonly helperActions: HelperActions;
 
-    constructor(page: Page, context: BrowserContext) {
+    constructor(page: Page) {
         this.page = page;
-        this.context = context;
         this.loginObjects = new LoginObjects(page);
-        this.helperActions = new HelperActions(page, context);
+        this.helperActions = new HelperActions(page);
     }
 
     async waitForLoginButton() {

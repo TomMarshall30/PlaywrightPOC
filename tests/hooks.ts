@@ -1,6 +1,6 @@
+import {Browser, BrowserContext, Page, test as baseTest} from '@playwright/test';
 import {LoginActions} from "../testActions/loginActions";
 import {HelperActions} from "../testActions/helperActions";
-import {Browser, BrowserContext, Page, test as baseTest} from '@playwright/test';
 
 
 export type TestOptions = {
@@ -22,7 +22,6 @@ const test = baseTest.extend<TestOptions>({
         {
             playwright,
             page,
-            context,
             browserstack,
             browserstackBrowser,
             browserstackOS,
@@ -52,7 +51,7 @@ const test = baseTest.extend<TestOptions>({
         }
 
         await vPage.goto("/");
-        await new LoginActions(vPage, context).waitForLoginButton();
+        await new LoginActions(vPage).waitForLoginButton();
         await use(vPage);
 
         if (browserstack) {
@@ -61,11 +60,11 @@ const test = baseTest.extend<TestOptions>({
         }
 
     },
-    loginTestActions: async ({page, context}, use) => {
-        await use(new LoginActions(page, context));
+    loginTestActions: async ({page}, use) => {
+        await use(new LoginActions(page));
     },
-    helperActions: async ({page, context}, use) => {
-        await use(new HelperActions(page, context));
+    helperActions: async ({page}, use) => {
+        await use(new HelperActions(page));
     },
 
 })

@@ -4,11 +4,10 @@ import {Context} from "node:vm";
 
 export class HelperActions {
     readonly page: Page;
-    readonly context: Context;
 
-    constructor(page: Page, context: BrowserContext) {
+    constructor(page: Page) {
         this.page = page;
-        this.context = context;
+
     }
 
     async validatePageTitle(title: string | RegExp) {
