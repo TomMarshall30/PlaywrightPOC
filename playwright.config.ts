@@ -19,27 +19,32 @@ export default defineConfig<TestOptions>({
     updateSnapshots: 'all',
 
     projects: [
-        {
-            name: 'browserstack',
-            use: {
-                browserstack: true,
-                browserstackBrowser: 'chrome', // allowed browsers are `chrome`, `edge`, `playwright-chromium`, `playwright-firefox` and `playwright-webkit`
-                browserstackOS: 'Windows',
-                browserstackOSVersion: '11'
-            },
-        },
         // {
-        //     name: 'chrome local',
+        //     name: 'browserstack',
         //     use: {
-        //         ...devices['Desktop Chrome'],
-        //         headless: false,
-        //         deviceScaleFactor: undefined,
-        //         viewport: null,
-        //         launchOptions: {
-        //             args: ['--start-maximized']
-        //         },
+        //         browserstack: true,
+        //         browserstackBrowser: 'chrome', // allowed browsers are `chrome`, `edge`, `playwright-chromium`, `playwright-firefox` and `playwright-webkit`
+        //         browserstackOS: 'Windows',
+        //         browserstackOSVersion: '11',
+        //         testUserName: '',
+        //         testUserPassword: ''
+        //
         //     },
         // },
+        {
+            name: 'chrome local',
+            use: {
+                ...devices['Desktop Chrome'],
+                headless: false,
+                deviceScaleFactor: undefined,
+                viewport: null,
+                launchOptions: {
+                    args: ['--start-maximized']
+                },
+                testUserName: '',
+                testUserPassword: ''
+            },
+        },
 
     ],
 });

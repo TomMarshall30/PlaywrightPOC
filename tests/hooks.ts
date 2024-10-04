@@ -10,6 +10,8 @@ export type TestOptions = {
     browserstackBrowser: string,
     browserstackOS: string,
     browserstackOSVersion: string,
+    testUserName: string,
+    testUserPassword: string,
 };
 
 const test = baseTest.extend<TestOptions>({
@@ -17,6 +19,8 @@ const test = baseTest.extend<TestOptions>({
     browserstackOS: ['Windows', {option: true}],
     browserstackBrowser: ['chrome', {option: true}],
     browserstackOSVersion: ['11', {option: true}],
+    testUserName: ['', {option: true}],
+    testUserPassword: ['', {option: true}],
 
     page: async (
         {

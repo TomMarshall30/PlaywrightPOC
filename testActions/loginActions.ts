@@ -18,15 +18,19 @@ export class LoginActions {
     }
 
     async updateUserName(username: string) {
-        await this.loginObjects.getUserNameInput().fill(username)
+        await this.loginObjects.getUserNameInput().fill(username);
+    }
+
+    async updateUserPassword(password: string) {
+        await this.loginObjects.getUserPasswordInput().fill(password);
     }
 
     async selectLoginButton() {
-        await this.loginObjects.getLoginButton().click()
+        await this.loginObjects.getLoginButton().click();
     }
 
     async validateInvalidLogin() {
-        await this.helperActions.validateScreenshotElement(this.loginObjects.getErrorContainer(), 'LoginError')
+        await this.helperActions.validateScreenshotElement(this.loginObjects.getErrorContainer(), 'LoginError');
     }
 
 }
