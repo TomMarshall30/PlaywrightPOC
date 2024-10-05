@@ -1,6 +1,6 @@
 import {Browser, BrowserContext, Page, test as baseTest} from '@playwright/test';
-import {LoginActions} from "../testActions/loginActions";
-import {HelperActions} from "../testActions/helperActions";
+import {LoginActions} from "../../testActions/loginActions";
+import {HelperActions} from "../../testActions/helperActions";
 
 
 export type TestOptions = {
@@ -11,7 +11,8 @@ export type TestOptions = {
     browserstackOS: string,
     browserstackOSVersion: string,
     testUserName: string,
-    testUserPassword: string,
+    testUserPassword: string
+
 };
 
 const test = baseTest.extend<TestOptions>({
@@ -41,7 +42,8 @@ const test = baseTest.extend<TestOptions>({
                 'browserstack.accessKey': process.env.BROWSERSTACK_ACCESS_KEY,
                 'browser': browserstackBrowser,
                 'os': browserstackOS,
-                'os_version': browserstackOSVersion,
+                'os_version': browserstackOSVersion
+
             };
 
             vBrowser = await playwright.chromium
@@ -50,8 +52,10 @@ const test = baseTest.extend<TestOptions>({
                 });
             vContext = await vBrowser.newContext(testInfo.project.use);
             vPage = await vContext.newPage();
+
         } else {
             vPage = page;
+
         }
 
         await vPage.goto("/");
@@ -61,14 +65,17 @@ const test = baseTest.extend<TestOptions>({
         if (browserstack) {
             await vContext.close();
             await vBrowser.close();
+
         }
 
     },
     loginTestActions: async ({page}, use) => {
         await use(new LoginActions(page));
+
     },
     helperActions: async ({page}, use) => {
         await use(new HelperActions(page));
+
     },
 
 })

@@ -1,5 +1,5 @@
 import {defineConfig, devices} from '@playwright/test';
-import type {TestOptions} from './tests/hooks';
+import type {TestOptions} from './tests/web/hooks';
 
 export default defineConfig<TestOptions>({
     testDir: './tests',
@@ -10,13 +10,19 @@ export default defineConfig<TestOptions>({
     workers: process.env.CI ? 1 : undefined,
 
     use: {
-        baseURL: 'https://www.saucedemo.com/',
+        baseURL: 'https://www.saucedemo.com/', //API https://api.themoviedb.org/3/, WEB https://www.saucedemo.com/
         trace: 'on-first-retry',
         video: 'on-first-retry',
         screenshot: 'only-on-failure',
+
+        extraHTTPHeaders: {
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${process.env.API_TOKEN}`
+
+        }
     },
 
-    updateSnapshots: 'all',
+    updateSnapshots: 'missing',
 
     projects: [
         // {
@@ -26,8 +32,8 @@ export default defineConfig<TestOptions>({
         //         browserstackBrowser: 'chrome', // allowed browsers are `chrome`, `edge`, `playwright-chromium`, `playwright-firefox` and `playwright-webkit`
         //         browserstackOS: 'Windows',
         //         browserstackOSVersion: '11',
-        //         testUserName: '',
-        //         testUserPassword: ''
+        //         testUserName: 'standard_user',
+        //         testUserPassword: 'secret_sauce'
         //
         //     },
         // },
@@ -41,8 +47,9 @@ export default defineConfig<TestOptions>({
                 launchOptions: {
                     args: ['--start-maximized']
                 },
-                testUserName: '',
-                testUserPassword: ''
+                testUserName: 'standard_user',
+                testUserPassword: 'secret_sauce'
+
             },
         },
 

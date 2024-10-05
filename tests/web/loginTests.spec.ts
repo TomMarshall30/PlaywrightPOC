@@ -1,6 +1,5 @@
 import test from "./hooks";
 
-
 test('Incorrect Username', async ({loginTestActions, helperActions}) => {
     await test.step('Fill in credentials and select login', async () => {
         await loginTestActions.updateUserName('WrongUserName');
