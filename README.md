@@ -12,7 +12,7 @@ Readability is very important to test development, so the framework is using DAM
     -node v22.9.0
 
 Install
-``npm -i``
+``npm install``
 
 Run tests
 ``npx playwright test``
