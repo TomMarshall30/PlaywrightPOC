@@ -18,7 +18,6 @@ export default defineConfig<TestOptions>({
         extraHTTPHeaders: {
             'Accept': 'application/json',
             'Authorization': `Bearer ${process.env.API_TOKEN}`
-
         }
     },
 
@@ -49,7 +48,6 @@ export default defineConfig<TestOptions>({
                 },
                 testUserName: 'standard_user',
                 testUserPassword: 'secret_sauce'
-
             },
         },
 

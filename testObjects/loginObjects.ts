@@ -5,27 +5,22 @@ export class LoginObjects {
 
     constructor(page: Page) {
         this.page = page;
-
     }
 
     getLoginButton() {
         return this.page.locator('input#login-button');
-
     }
 
     getUserNameInput() {
         return this.page.locator('input#user-name');
-
     }
 
     getUserPasswordInput() {
         return this.page.locator('input#password');
-
     }
 
     getErrorContainer() {
         return this.page.locator('div.error-message-container.error');
-
     }
 
 }
