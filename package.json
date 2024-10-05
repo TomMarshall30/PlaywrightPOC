@@ -8,7 +8,7 @@
     "postinstall": "npm update browserstack-node-sdk"
   },
   "keywords": [],
-  "author": "",
+  "author": "Tom Marshall",
   "license": "ISC",
   "description": "",
   "devDependencies": {

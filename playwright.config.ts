@@ -3,7 +3,7 @@ import type {TestOptions} from './tests/web/hooks';
 
 export default defineConfig<TestOptions>({
     testDir: './tests',
-    reporter: [['./reporters/mainReporter.ts', {customOption: 'some value'}]],
+    reporter: [['./reporters/mainReporter.ts', {customOption: ''}]],
     fullyParallel: true,
     forbidOnly: !!process.env.CI,
     retries: process.env.CI ? 2 : 0,
