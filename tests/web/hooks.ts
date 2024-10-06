@@ -39,6 +39,7 @@ const test = baseTest.extend<TestOptions>({
         let vBrowser: Browser;
         let vContext: BrowserContext;
 
+        // Before Each
         if (browserstack) {
             const caps = {
                 'browserstack.username': process.env.BROWSERSTACK_USERNAME,
@@ -62,6 +63,7 @@ const test = baseTest.extend<TestOptions>({
         await new LoginActions(vPage).waitForLoginButton();
         await use(vPage);
 
+        // After Each
         if (browserstack) {
             await vContext.close();
             await vBrowser.close();
