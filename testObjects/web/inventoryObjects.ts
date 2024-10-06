@@ -11,4 +11,8 @@ export class InventoryObjects {
         return this.page.locator('button.btn_inventory').all();
     }
 
+    getCartButton() {
+        return this.page.locator('a.shopping_cart_link');
+    }
+
 }

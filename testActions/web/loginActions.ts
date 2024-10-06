@@ -1,5 +1,5 @@
 import {expect, type Page} from '@playwright/test';
-import {LoginObjects} from "../testObjects/loginObjects";
+import {LoginObjects} from "../../testObjects/web/loginObjects";
 import {HelperActions} from "./helperActions";
 
 export class LoginActions {

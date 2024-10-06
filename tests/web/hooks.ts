@@ -1,12 +1,14 @@
 import {Browser, BrowserContext, Page, test as baseTest} from '@playwright/test';
-import {LoginActions} from "../../testActions/loginActions";
-import {InventoryActions} from "../../testActions/inventoryActions";
-import {HelperActions} from "../../testActions/helperActions";
+import {LoginActions} from "../../testActions/web/loginActions";
+import {InventoryActions} from "../../testActions/web/inventoryActions";
+import {CartActions} from "../../testActions/web/cartActions";
+import {HelperActions} from "../../testActions/web/helperActions";
 
 
 export type TestOptions = {
     loginTestActions: LoginActions;
     inventoryActions: InventoryActions;
+    cartActions: CartActions;
     helperActions: HelperActions;
     browserstack: boolean,
     browserstackBrowser: string,
@@ -66,16 +68,19 @@ const test = baseTest.extend<TestOptions>({
         }
 
     },
+
     loginTestActions: async ({page}, use) => {
         await use(new LoginActions(page));
     },
     inventoryActions: async ({page}, use) => {
         await use(new InventoryActions(page));
     },
+    cartActions: async ({page}, use) => {
+        await use(new CartActions(page));
+    },
     helperActions: async ({page}, use) => {
         await use(new HelperActions(page));
     },
-
 
 })
 

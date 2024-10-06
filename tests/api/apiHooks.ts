@@ -1,5 +1,5 @@
 import {test as baseTest} from '@playwright/test';
-import {ApiAuthActions} from "../../testActions/apiAuthActions";
+import {ApiAuthActions} from "../../testActions/api/apiAuthActions";
 
 
 export type TestOptions = {

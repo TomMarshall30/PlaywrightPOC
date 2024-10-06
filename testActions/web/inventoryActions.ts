@@ -1,5 +1,5 @@
 import {expect, type Page} from '@playwright/test';
-import {InventoryObjects} from "../testObjects/inventoryObjects";
+import {InventoryObjects} from "../../testObjects/web/inventoryObjects";
 
 export class InventoryActions {
     readonly page: Page;
@@ -25,6 +25,11 @@ export class InventoryActions {
         }
 
         expect(count == 6);
+    }
+
+    async selectCart() {
+        await this.inventoryObjects.getCartButton().click();
+
     }
 
 }
