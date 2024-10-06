@@ -46,8 +46,8 @@ export default defineConfig<TestOptions>({
                 launchOptions: {
                     args: ['--start-maximized']
                 },
-                testUserName: 'standard_user',
-                testUserPassword: 'secret_sauce'
+                testUserName: '',
+                testUserPassword: ''
             },
         },
 

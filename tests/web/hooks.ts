@@ -1,10 +1,12 @@
 import {Browser, BrowserContext, Page, test as baseTest} from '@playwright/test';
 import {LoginActions} from "../../testActions/loginActions";
+import {InventoryActions} from "../../testActions/inventoryActions";
 import {HelperActions} from "../../testActions/helperActions";
 
 
 export type TestOptions = {
     loginTestActions: LoginActions;
+    inventoryActions: InventoryActions;
     helperActions: HelperActions;
     browserstack: boolean,
     browserstackBrowser: string,
@@ -67,9 +69,13 @@ const test = baseTest.extend<TestOptions>({
     loginTestActions: async ({page}, use) => {
         await use(new LoginActions(page));
     },
+    inventoryActions: async ({page}, use) => {
+        await use(new InventoryActions(page));
+    },
     helperActions: async ({page}, use) => {
         await use(new HelperActions(page));
     },
+
 
 })
 
