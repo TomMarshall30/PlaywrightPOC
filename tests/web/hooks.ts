@@ -68,7 +68,6 @@ const test = baseTest.extend<TestOptions>({
         }
 
     },
-
     loginTestActions: async ({page}, use) => {
         await use(new LoginActions(page));
     },
