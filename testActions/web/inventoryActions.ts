@@ -14,7 +14,6 @@ export class InventoryActions {
         for (const el of await this.inventoryObjects.getAddToCartButtons()) {
             await el.click();
         }
-
     }
 
     async validateEachAddToCartSelected() {
@@ -29,7 +28,6 @@ export class InventoryActions {
 
     async selectCart() {
         await this.inventoryObjects.getCartButton().click();
-
     }
 
 }

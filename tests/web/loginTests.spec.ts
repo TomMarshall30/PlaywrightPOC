@@ -18,7 +18,6 @@ import test from "./hooks";
             await helperActions.validateScreenshot();
         })
     });
-
 })
 
 test('Login no password', async ({loginTestActions, helperActions}) => {
