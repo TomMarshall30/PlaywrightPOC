@@ -24,10 +24,11 @@ test('Add all items to the cart and checkout', async ({inventoryActions, helperA
         await helperActions.validateScreenshot();
     })
 
-    await test.step('Fill in customer form', async () => {
+    await test.step('Fill in customer form and validate', async () => {
         await cartActions.updateFirstName('FirstName');
         await cartActions.updateLastName('LastName');
         await cartActions.updatePostalCode('PostalCode');
+        await helperActions.validateScreenshot();
     })
 
     await test.step('Select continue and validate', async () => {
